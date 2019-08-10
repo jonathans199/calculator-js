@@ -1,23 +1,72 @@
-let 
-num1 = 1, 
-num2 = 2;
+// console.log(document.domain)
+// console.log(document.url)
+// console.log(document.body)
+// console.log(document.all)
+// console.log(document.head)
+// console.log(document.buttons)
+// console.log(document.links)
+// console.dir(document)
+
+let display = (document.getElementById('display'))
+let number1 = null
+let number2 = null
+let total = null
+
+function setValue(btnValue){
+      number1 = btnValue.getAttribute('data-btn-number')
+      display.value = number1
+  // console.log(btnValue)
+
+  console.log(number1)
+}
 
 
 
-result = num1 + num2
 
-console.log(result)
-
-
-// function num1Function() {
-//   let result = (document.getElementById('inputField'))
-
-//     result.value = 1
+// if (document.getElementById('btn1').click() ){
+//   inputField.value = 1
 // }
 
-// function num2Function() {
-//   let result = (document.getElementById('inputField'))
 
-//     result.value = 2
+// var inputField = (document.getElementById('inputField')).value = num1
+
+// function memNumb1(){
+//   let inputField = (document.getElementById('inputField')).value = 1
+//   num1 = 1
 // }
+
+// function memNumb2(){
+//   let inputField = (document.getElementById('inputField')).value = 2
+//   num2 = 2
+// }
+
+
+
+
+
+
+
+// // dresult = num1 + num2 
+
+
+// // function num1Function() {
+// //   let result = (document.getElementById('inputField'))
+
+// //     result.value = 1
+// // }
+
+// // function num2Function() {
+// //   let result = (document.getElementById('inputField'))
+
+// //     result.value = 2
+// // }
+
+
+
+
+
+
+
+
+
 
