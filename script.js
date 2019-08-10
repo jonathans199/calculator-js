@@ -1,11 +1,3 @@
-// console.log(document.domain)
-// console.log(document.url)
-// console.log(document.body)
-// console.log(document.all)
-// console.log(document.head)
-// console.log(document.buttons)
-// console.log(document.links)
-// console.dir(document)
 
 let display = (document.getElementById('display'))
 let number1 = null
@@ -15,8 +7,6 @@ let total = null
 function setValue(btnValue){
       number1 = btnValue.getAttribute('data-btn-number')
       display.value = number1
-  // console.log(btnValue)
-
   console.log(number1)
 }
 
