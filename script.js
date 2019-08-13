@@ -36,7 +36,7 @@ function setValue(btnValue){
 function addition(){
 
   //clears display
-  // display.reset
+  display.reset();
 
   // add num1 + num2
   // result = num1 + num2
@@ -45,7 +45,6 @@ function addition(){
   // number = btnValue.getAttribute('data-btn-number');
 
   // arrayNum2.push(numbeer)
-  
   // operator.getAttribute('data-btn-operation')
 }
 
