@@ -35,9 +35,7 @@ let multiplying = false
 // get values from HTML
 function setValue(btnValue) {
   if (functionOneWasCalled == false) {
-    // num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
     num = btnValue //gets number from num btn pressed
-    // console.log(btnValue)
 
     array.push(num); //push number from value into array => array
 
