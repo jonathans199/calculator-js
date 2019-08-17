@@ -74,43 +74,70 @@ CALCULATOR
 // }
 
 /*----------------- option 2.b - WORKING  ---------------*/
-
 const display = document.getElementById('display')
 let number = null
 let array = []
 
-let turn1 = false
-
 let num1 = null
+let functionOneWasCalled = false
+
 let num2 = null
 let total = null
 
 
 function setValue(btnValue) {
 
+  if (functionOneWasCalled == false) {
+
   num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
 
   array.push(num); //push number from value into array => array
 
   number = (display.value = array.join(''));  //assign first number to number
-  console.log(number)
+  num1 = parseInt(number)
 
-  turn1 = true
+  console.log(num1)
+
+  } else if (functionOneWasCalled == true) {
+    num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
+
+    array.push(num); //push number from value into array => array
+
+    number = (display.value = array.join('')); //assign first number to number
+    num2 = parseInt(number)
+
+    console.log(num2)
+  }
 }
 
 function addition() {
-
-  if (number > 0 && turn1 == !false) {
-    num1 = number  //let num1 be number
-  }
 
   display.value = 0  //set display to 0  
   array = [] //empty the array 
 
   console.log('array & display cleared this is number1 ' + num1)
+  console.log(number)
 
+  if(num1 > 0){
+    functionOneWasCalled = true
+  }
 }
 
+function equals(){
+  total = num1 + num2
+
+  display.value = total
+  console.log(total)
+}
+
+function clr(){
+  display.value = 0 
+  array = []
+  num1 = null
+  num2 = null 
+  functionOneWasCalled = false
+  total = 0
+}
 
   // get total
 // total = num1 + num2
