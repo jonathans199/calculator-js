@@ -20,17 +20,19 @@ const display = document.getElementById('display')
 let number = null
 let array = []
 
+// numbers to get values
 let num1 = null
-let functionOneWasCalled = false
-
 let num2 = null
 let total = null
 
+// Flags
+let functionOneWasCalled = false
 let adding = false
 let subtracting = false
 let dividing = false
 let multiplying = false
 
+// get values from HTML
 function setValue(btnValue) {
   if (functionOneWasCalled == false) {
     num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
@@ -54,6 +56,7 @@ function setValue(btnValue) {
   }
 }
 
+// when addition btn is pressed
 function addition() {
   display.value = 0  
   array = []
@@ -66,6 +69,7 @@ function addition() {
   }
 }
 
+// when substraction btn is pressed
 function substraction(){
    display.value = 0 
    array = []
@@ -78,6 +82,7 @@ function substraction(){
    }
 }
 
+// when division btn is pressed
 function division(){
    display.value = 0 
    array = []
@@ -90,6 +95,7 @@ function division(){
    }
 }
 
+// when multiplication btn is pressed
 function multiplication(){
    display.value = 0 
    array = []
@@ -102,7 +108,7 @@ function multiplication(){
    }
 }
 
-
+// when equals btn is pressed
 function equals(){
   if (adding == true ){
     total = (num1 + num2)
@@ -127,6 +133,7 @@ function equals(){
   functionOneWasCalled = false
 }
 
+// when clr btn is pressed 
 function clr(){
   display.value = 0
   array = []
