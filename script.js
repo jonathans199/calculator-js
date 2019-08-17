@@ -26,59 +26,118 @@ let functionOneWasCalled = false
 let num2 = null
 let total = null
 
+let adding = false
+let subtracting = false
+let dividing = false
+let multiplying = false
 
 function setValue(btnValue) {
-
   if (functionOneWasCalled == false) {
-
-  num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
-
-  array.push(num); //push number from value into array => array
-
-  number = (display.value = array.join(''));  //assign first number to number
-  num1 = parseInt(number)
-
-  console.log(num1)
-
-  } else if (functionOneWasCalled == true) {
     num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
 
     array.push(num); //push number from value into array => array
 
-    number = (display.value = array.join('')); //assign first number to number
-    num2 = parseInt(number)
+    number = (display.value = array.join(''));  //assign first number to number
+    num1 = parseInt(number)
 
-    console.log(num2)
+    console.log(num1)
+
+  } else if (functionOneWasCalled == true) {
+      num = btnValue.getAttribute('data-btn-number'); //gets number from num btn pressed
+
+      array.push(num); //push number from value into array => array
+
+      number = (display.value = array.join('')); //assign first number to number
+      num2 = parseInt(number)
+
+      console.log(num2)
   }
 }
 
 function addition() {
+  display.value = 0  
+  array = []
+  adding = true
 
-  display.value = 0  //set display to 0  
-  array = [] //empty the array 
-
-  console.log('array & display cleared this is number1 ' + num1)
-  console.log(number)
+  console.log('adding')
 
   if(num1 > 0){
     functionOneWasCalled = true
   }
 }
 
+function substraction(){
+   display.value = 0 
+   array = []
+   subtracting = true
+
+  console.log('subtracting')
+
+   if (num1 > 0) {
+     functionOneWasCalled = true
+   }
+}
+
+function division(){
+   display.value = 0 
+   array = []
+   dividing = true
+
+   console.log('dividing')
+
+   if (num1 > 0) {
+     functionOneWasCalled = true
+   }
+}
+
+function multiplication(){
+   display.value = 0 
+   array = []
+   multiplying = true
+
+   console.log('multiplying')
+
+   if (num1 > 0) {
+     functionOneWasCalled = true
+   }
+}
+
+
 function equals(){
-  total = num1 + num2
+  if (adding == true ){
+    total = (num1 + num2)
+    console.log(`total = ${total} from ${num1} + ${num2}`)
+  } else if (subtracting == true){
+    total = (num1 - num2)
+    console.log(`total = ${total} from ${num1} - ${num2}`)
+  } else if (dividing == true){
+    total = (num1 / num2)
+    console.log(`total = ${total} from ${num1} / ${num2}`)
+  } else if (multiplying == true){
+    total = (num1 * num2)
+    console.log(`total = ${total} from ${num1} * ${num2}`)
+  } 
 
   display.value = total
-  console.log(total)
+  console.log('total ' + total)
+
+  num1 = null
+  num2 = null
+  array = []
+  functionOneWasCalled = false
 }
 
 function clr(){
-  display.value = 0 
+  display.value = 0
   array = []
   num1 = null
-  num2 = null 
+  num2 = null
   functionOneWasCalled = false
   total = 0
+  adding = false
+  subtracting = false
+  dividing = false
+  multiplying = false
+  
+  console.log('clear')
 }
-
- 
