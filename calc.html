@@ -5,37 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>Calculator in JS</title>
+  <title>JonS Calculator in JS</title>
 </head>
 
 <body>
-  <div class="container mt-5 col-md-5 calculator">
-    <div class="row">
+  <h1 class="header text-center mt-3">My JS Calculator</h1>
 
+  <div class="container col-md-5 calculator">
+    <div class="row mx-auto">
       <input class="col" type="text" id="display" value="0"></input>
     </div>
 
-    <!-- option 2.b WORKING up to clear display-->
-    <div class="row mt-2 btn-group">
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="1" onclick="setValue(this)">1</button>
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="2" onclick="setValue(this)">2</button>
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="3" onclick="setValue(this)">3</button>
+    <div class="row btn-group">
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(1)">1</button>
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(2)">2</button>
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(3)">3</button>
     </div>
-    <div class="row mt-2 btn-group">
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="4" onclick="setValue(this)">4</button>
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="5" onclick="setValue(this)">5</button>
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="6" onclick="setValue(this)">6</button>
+    <div class="row btn-group">
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(4)">4</button>
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(5)">5</button>
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(6)">6</button>
     </div>
-    <div class="row mt-2 btn-group">
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="7" onclick="setValue(this)">7</button>
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="8" onclick="setValue(this)">8</button>
-      <button class="col-4 btn btn-secondary btn-number" data-btn-number="9" onclick="setValue(this)">9</button>
+    <div class="row btn-group">
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(7)">7</button>
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(8)">8</button>
+      <button class="col-4 btn btn-secondary btn-number" onclick="setValue(9)">9</button>
     </div>
-    <div class="row my-2 btn-group">
-      <button class="col-6 btn btn-secondary btn-number" data-btn-number="0" onclick="setValue(this)">0</button>
+    <div class="row btn-group">
+      <button class="col-6 btn btn-secondary btn-number" onclick="setValue(0)">0</button>
       <button class="col-6 btn btn-secondary btn-number" onclick="setValue('.')">.</button>
     </div>
 
