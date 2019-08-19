@@ -1,6 +1,4 @@
-
-/* 
-CALCULATOR 
+/* CALCULATOR 
   1 - get value when btn is pressed
   2 - display that value in the display 
   3 - if btn pressed more than once keep adding btn to string
@@ -15,9 +13,8 @@ CALCULATOR
   - 
 */
 
-/*----------------- option 2.b - WORKING  ---------------*/
 const display = document.getElementById('display')
-let number = null
+let displaysValue = null
 let array = []
 
 // numbers to get values
@@ -26,7 +23,7 @@ let num2 = null
 let total = null
 
 // Flags
-let functionOneWasCalled = false
+let setValueWasCalled = false
 let adding = false
 let subtracting = false
 let dividing = false
@@ -34,77 +31,73 @@ let multiplying = false
 
 // get values from HTML
 function setValue(btnValue) {
-  if (functionOneWasCalled == false) {
+  if (setValueWasCalled == false) {
     num = btnValue //gets number from num btn pressed
 
-    array.push(num); //push number from value into array => array
+    array.push(num) //push number from value into array => array
 
-    number = (display.value = array.join(''));  //assign first number to number
-    num1 = parseInt(number)
+    displaysValue = (display.value = array.join(''))  //assign first number to number
+    num1 = parseFloat(displaysValue)
 
     console.log(num1)
 
-  } else if (functionOneWasCalled == true) {
-      num = btnValue; //gets number from num btn pressed
+  } else if (setValueWasCalled == true) {
+      num = btnValue //gets number from num btn pressed
 
-      array.push(num); //push number from value into array => array
+      array.push(num) //push number from value into array => array
 
-      number = (display.value = array.join('')); //assign first number to number
-      num2 = parseInt(number)
+      displaysValue = (display.value = array.join('')) //assign first number to number
+      num2 = parseFloat(displaysValue)
 
       console.log(num2)
   }
 }
 
 // when addition btn is pressed
-function addition() {
-  display.value = 0  
+function addition() {  
   array = []
   adding = true
 
   console.log('adding')
 
   if(num1 > 0){
-    functionOneWasCalled = true
+    setValueWasCalled = true
   }
 }
 
 // when substraction btn is pressed
-function substraction(){
-   display.value = 0 
+function substraction(){ 
    array = []
    subtracting = true
 
   console.log('subtracting')
 
    if (num1 > 0) {
-     functionOneWasCalled = true
+     setValueWasCalled = true
    }
 }
 
 // when division btn is pressed
-function division(){
-   display.value = 0 
+function division(){ 
    array = []
    dividing = true
 
    console.log('dividing')
 
    if (num1 > 0) {
-     functionOneWasCalled = true
+     setValueWasCalled = true
    }
 }
 
 // when multiplication btn is pressed
-function multiplication(){
-   display.value = 0 
+function multiplication(){ 
    array = []
    multiplying = true
 
    console.log('multiplying')
 
    if (num1 > 0) {
-     functionOneWasCalled = true
+     setValueWasCalled = true
    }
 }
 
@@ -112,16 +105,16 @@ function multiplication(){
 function equals(){
   if (adding == true ){
     total = (num1 + num2)
-    console.log(`total = ${total} from ${num1} + ${num2}`)
+      console.log(`total = ${total} from ${num1} + ${num2}`)
   } else if (subtracting == true){
     total = (num1 - num2)
-    console.log(`total = ${total} from ${num1} - ${num2}`)
+      console.log(`total = ${total} from ${num1} - ${num2}`)
   } else if (dividing == true){
     total = (num1 / num2)
-    console.log(`total = ${total} from ${num1} / ${num2}`)
+      console.log(`total = ${total} from ${num1} / ${num2}`)
   } else if (multiplying == true){
     total = (num1 * num2)
-    console.log(`total = ${total} from ${num1} * ${num2}`)
+      console.log(`total = ${total} from ${num1} * ${num2}`)
   } 
 
   display.value = total
@@ -130,7 +123,7 @@ function equals(){
   num1 = null
   num2 = null
   array = []
-  functionOneWasCalled = false
+  setValueWasCalled = false
 }
 
 // when clr btn is pressed 
@@ -139,7 +132,7 @@ function clr(){
   array = []
   num1 = null
   num2 = null
-  functionOneWasCalled = false
+  setValueWasCalled = false
   total = 0
   adding = false
   subtracting = false

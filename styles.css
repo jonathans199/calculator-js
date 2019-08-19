@@ -1,3 +1,10 @@
+
+body{
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 47%, rgba(240, 240, 240, 1) 53%, rgba(65, 65, 65, 1) 92%, rgba(0, 0, 0, 1) 100%);
+  height: -webkit-fill-available;
+}
+
 .header{
   font-family: 'Sacramento', cursive;
     font-size: 60px;
