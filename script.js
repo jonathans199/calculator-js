@@ -17,6 +17,8 @@ const display = document.getElementById('display')
 let displaysValue = null
 let array = []
 
+let decimal = document.getElementById('decimal')
+
 // numbers to get values
 let num1 = null
 let num2 = null
@@ -36,6 +38,10 @@ function setValue(btnValue) {
 
     array.push(num) //push number from value into array => array
 
+    if (array.includes('.') ){
+        decimal.disabled = true    
+    } 
+
     displaysValue = (display.value = array.join(''))  //assign first number to number
     num1 = parseFloat(displaysValue)
 
@@ -45,6 +51,10 @@ function setValue(btnValue) {
       num = btnValue //gets number from num btn pressed
 
       array.push(num) //push number from value into array => array
+
+      if (array.includes('.')) {
+        decimal.disabled = true
+      }
 
       displaysValue = (display.value = array.join('')) //assign first number to number
       num2 = parseFloat(displaysValue)
@@ -56,7 +66,9 @@ function setValue(btnValue) {
 // when addition btn is pressed
 function addition() {  
   array = []
+  decimal.disabled = false
   adding = true
+  
 
   console.log('adding')
 
@@ -68,6 +80,7 @@ function addition() {
 // when substraction btn is pressed
 function substraction(){ 
    array = []
+   decimal.disabled = false
    subtracting = true
 
   console.log('subtracting')
@@ -80,6 +93,7 @@ function substraction(){
 // when division btn is pressed
 function division(){ 
    array = []
+   decimal.disabled = false
    dividing = true
 
    console.log('dividing')
@@ -92,6 +106,7 @@ function division(){
 // when multiplication btn is pressed
 function multiplication(){ 
    array = []
+   decimal.disabled = false
    multiplying = true
 
    console.log('multiplying')
@@ -123,6 +138,8 @@ function equals(){
   num1 = null
   num2 = null
   array = []
+  decimal.disabled = false
+
   setValueWasCalled = false
 }
 
@@ -130,6 +147,7 @@ function equals(){
 function clr(){
   display.value = 0
   array = []
+  decimal.disabled = false
   num1 = null
   num2 = null
   setValueWasCalled = false
