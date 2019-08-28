@@ -52,7 +52,7 @@ function setValue(btnValue) {
     displaysValue = (display.value = array.join(''))  //assign first number to number
     num1 = parseFloat(displaysValue)
 
-    console.log(num1)
+    console.log('num1=> ' + num1)
 
   } else if (setValueWasCalled == "yes") {
       num = btnValue //gets number from num btn pressed
@@ -66,22 +66,28 @@ function setValue(btnValue) {
       displaysValue = (display.value = array.join('')) //assign first number to number
       num2 = parseFloat(displaysValue)
 
-      console.log(num2)
+      console.log('num2=>' + num2)
   }
 }
 
-function reset(){
+// function reset(){
+//   array = []
+//   decimalBtn.disabled = false
+
+//   if (num1 > 0) {
+//     setValueWasCalled = "yes"
+//   }
+// }
+
+
+addBtn.onclick = function(){
   array = []
   decimalBtn.disabled = false
 
   if (num1 > 0) {
     setValueWasCalled = "yes"
   }
-}
 
-
-addBtn.onclick = function(){
-  reset()
   adding = "yes"
   console.log('adding')
 }
