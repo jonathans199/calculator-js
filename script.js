@@ -17,7 +17,14 @@ const display = document.getElementById('display')
 let displaysValue = null
 let array = []
 
-let decimal = document.getElementById('decimal')
+// Operators
+const decimalBtn = document.getElementById('btn-decimal')
+const addBtn = document.getElementById('btn-add')
+const minusBtn = document.getElementById('btn-minus')
+const divideBtn = document.getElementById('btn-divide')
+const multiplyBtn = document.getElementById('btn-multiply')
+const equalsBtn = document.getElementById('btn-equals')
+const clearBtn = document.getElementById('btn-clear')
 
 // numbers to get values
 let num1 = null
@@ -25,21 +32,21 @@ let num2 = null
 let total = null
 
 // Flags
-let setValueWasCalled = false
-let adding = false
-let subtracting = false
-let dividing = false
-let multiplying = false
+let setValueWasCalled = "yes"
+let adding = "yes"
+let subtracting = "yes"
+let dividing = "yes"
+let multiplying = "yes"
 
 // get values from HTML
 function setValue(btnValue) {
-  if (setValueWasCalled == false) {
+  if (setValueWasCalled == "yes") {
     num = btnValue //gets number from num btn pressed
 
     array.push(num) //push number from value into array => array
 
     if (array.includes('.') ){
-        decimal.disabled = true    
+        decimalBtn.disabled = true    
     } 
 
     displaysValue = (display.value = array.join(''))  //assign first number to number
@@ -47,13 +54,13 @@ function setValue(btnValue) {
 
     console.log(num1)
 
-  } else if (setValueWasCalled == true) {
+  } else if (setValueWasCalled == "yes") {
       num = btnValue //gets number from num btn pressed
 
       array.push(num) //push number from value into array => array
 
       if (array.includes('.')) {
-        decimal.disabled = true
+        decimalBtn.disabled = true
       }
 
       displaysValue = (display.value = array.join('')) //assign first number to number
@@ -63,99 +70,190 @@ function setValue(btnValue) {
   }
 }
 
-// when addition btn is pressed
-function addition() {  
+function reset(){
   array = []
-  decimal.disabled = false
-  adding = true
-  
+  decimalBtn.disabled = false
 
-  console.log('adding')
-
-  if(num1 > 0){
-    setValueWasCalled = true
+  if (num1 > 0) {
+    setValueWasCalled = "yes"
   }
 }
 
-// when substraction btn is pressed
-function substraction(){ 
-   array = []
-   decimal.disabled = false
-   subtracting = true
 
-  console.log('subtracting')
-
-   if (num1 > 0) {
-     setValueWasCalled = true
-   }
+addBtn.onclick = function(){
+  reset()
+  adding = "yes"
+  console.log('adding')
 }
 
-// when division btn is pressed
-function division(){ 
-   array = []
-   decimal.disabled = false
-   dividing = true
+// minusBtn.onclick = function(){
+//   reset()
+//   subtracting = "yes"
+//   console.log('subtracting')
+// }
 
-   console.log('dividing')
+// divideBtn.onclick = function(){
+//   reset()
+//   dividing = "yes"
+//   console.log('dividing')
+// }
 
-   if (num1 > 0) {
-     setValueWasCalled = true
-   }
-}
+// multiplyBtn.onclick = function(){
+//   reset()
+//   multiplying = "yes"
+//   console.log('multiplying')
+// }
 
-// when multiplication btn is pressed
-function multiplication(){ 
-   array = []
-   decimal.disabled = false
-   multiplying = true
 
-   console.log('multiplying')
-
-   if (num1 > 0) {
-     setValueWasCalled = true
-   }
-}
-
-// when equals btn is pressed
-function equals(){
-  if (adding == true ){
-    total = (num1 + num2)
-      console.log(`total = ${total} from ${num1} + ${num2}`)
-  } else if (subtracting == true){
-    total = (num1 - num2)
-      console.log(`total = ${total} from ${num1} - ${num2}`)
-  } else if (dividing == true){
-    total = (num1 / num2)
-      console.log(`total = ${total} from ${num1} / ${num2}`)
-  } else if (multiplying == true){
-    total = (num1 * num2)
-      console.log(`total = ${total} from ${num1} * ${num2}`)
-  } 
-
-  display.value = total
-  console.log('total ' + total)
-
-  num1 = null
-  num2 = null
-  array = []
-  decimal.disabled = false
-
-  setValueWasCalled = false
-}
-
-// when clr btn is pressed 
-function clr(){
+clearBtn.onclick = function(){
   display.value = 0
   array = []
-  decimal.disabled = false
+  decimalBtn.disabled = false
   num1 = null
   num2 = null
-  setValueWasCalled = false
+  setValueWasCalled = "no"
   total = 0
-  adding = false
-  subtracting = false
-  dividing = false
-  multiplying = false
-  
+  adding = "no"
+  subtracting = "no"
+  dividing = "no"
+  multiplying = "no"
+
   console.log('clear')
 }
+
+
+
+equalsBtn.onclick = function(){
+  // reset()
+  {
+    if (adding == "yes") {
+      total = (num1 + num2)
+      console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
+    // } else if (subtracting == "yes") {
+    //   total = (num1 - num2)
+    //   console.log(`total = ${total} from ${num1} - ${num2}`)
+    // } else if (dividing == "yes") {
+    //   total = (num1 / num2)
+    //   console.log(`total = ${total} from ${num1} / ${num2}`)
+    // } else if (multiplying == "yes") {
+    //   total = (num1 * num2)
+    //   console.log(`total = ${total} from ${num1} * ${num2}`)
+    }
+
+    display.value = total
+    console.log('total ' + total)
+
+    // num1 = null
+    // num2 = null
+    array = []
+    decimalBtn.disabled = false
+
+    setValueWasCalled = "no"
+  }
+}
+
+
+
+
+/*---- OPTION 1 ------*/
+// // when addition btn is pressed
+// function addition() {  
+//   array = []
+//   decimalBtn.disabled = false
+//   adding == "yes"
+  
+
+//   console.log('adding')
+
+//   if(num1 > 0){
+//     setValueWasCalled == 'yes'
+//   }
+// }
+
+// // when substraction btn is pressed
+// function substraction(){ 
+//    array = []
+//    decimalBtn.disabled = false
+//    subtracting = true
+
+//   console.log('subtracting')
+
+//    if (num1 > 0) {
+//      setValueWasCalled = true
+//    }
+// }
+
+// // when division btn is pressed
+// function division(){ 
+//    array = []
+//    decimalBtn.disabled = false
+//    dividing = true
+
+//    console.log('dividing')
+
+//    if (num1 > 0) {
+//      setValueWasCalled = true
+//    }
+// }
+
+// // when multiplication btn is pressed
+// function multiplication(){ 
+//    array = []
+//    decimalBtn.disabled = false
+//    multiplying = true
+
+//    console.log('multiplying')
+
+//    if (num1 > 0) {
+//      setValueWasCalled = true
+//    }
+// }
+
+
+
+
+// when equals btn is pressed
+
+// function equals(){
+//   if (adding === "yes" ){
+//     total = (num1 + num2)
+//       console.log(`total = ${total} from ${num1} + ${num2}`)
+//   } else if (subtracting === "yes"){
+//     total = (num1 - num2)
+//       console.log(`total = ${total} from ${num1} - ${num2}`)
+//   } else if (dividing === "yes"){
+//     total = (num1 / num2)
+//       console.log(`total = ${total} from ${num1} / ${num2}`)
+//   } else if (multiplying === "yes"){
+//     total = (num1 * num2)
+//       console.log(`total = ${total} from ${num1} * ${num2}`)
+//   } 
+
+//   display.value = total
+//   console.log('total ' + total)
+
+//   num1 = null
+//   num2 = null
+//   array = []
+//   decimalBtn.disabled = false
+
+//   setValueWasCalled = false
+// }
+
+// when clr btn is pressed 
+
+// function clr(){
+//   display.value = 0
+//   array = []
+//   decimal.disabled = false
+//   num1 = null
+//   num2 = null
+//   setValueWasCalled = false
+//   total = 0
+//   adding = false
+//   subtracting = false
+//   dividing = false
+//   multiplying = false
+  
+//   console.log('clear')
+// }
