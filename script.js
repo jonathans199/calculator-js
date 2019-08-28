@@ -32,11 +32,11 @@ let num2 = null
 let total = null
 
 // Flags
-let setValueWasCalled = "yes"
-let adding = "yes"
-let subtracting = "yes"
-let dividing = "yes"
-let multiplying = "yes"
+let setValueWasCalled = "no"
+let adding = "no"
+let subtracting = "no"
+let dividing = "no"
+let multiplying = "no"
 
 // get values from HTML
 function setValue(btnValue) {
