@@ -16,6 +16,7 @@
 const display = document.getElementById('display')
 let displaysValue = null
 let array = []
+let operator1 = null
 
 // Operators
 const decimalBtn = document.getElementById('btn-decimal')
@@ -30,6 +31,8 @@ const clearBtn = document.getElementById('btn-clear')
 let num1, num2, total 
 
 // Flags
+let operating = null
+
 let setValueWasCalled = "no"
 let adding = "no"
 let subtracting = "no"
@@ -39,9 +42,7 @@ let multiplying = "no"
 // get values from HTML
 function setValue(btnValue) {
   if (setValueWasCalled == "no") {
-    num = btnValue //gets number from num btn pressed
-
-    array.push(num) //push number from value into array => array
+    array.push(btnValue) //push number from value into array => array
 
     if (array.includes('.') ){
         decimalBtn.disabled = true    
@@ -50,12 +51,10 @@ function setValue(btnValue) {
     displaysValue = (display.value = array.join(''))  //assign first number to number
     num1 = parseFloat(displaysValue) 
 
-    console.log('num1=> ' + num1)
+    console.log('num1 => ' + num1)
 
   } else if (setValueWasCalled == "yes") {
-      num = btnValue //gets number from num btn pressed
-
-      array.push(num) //push number from value into array => array
+    array.push(btnValue) //push number from value into array => array
 
       if (array.includes('.')) { //find out if array already contains a decimal
         decimalBtn.disabled = true // if yes then disable the decimal button
@@ -64,42 +63,66 @@ function setValue(btnValue) {
       displaysValue = (display.value = array.join('')) //assign first number to number
       num2 = parseFloat(displaysValue)
 
-      console.log('num2=>' + num2)
+      console.log('num2 =>' + num2)
   }
 }
 
-function reset(){
+function reset(x){
   array = []
   decimalBtn.disabled = false
+  console.log(x)
 
   if (num1 > 0) {
     setValueWasCalled = "yes"
   }
 }
 
+function resetSecond(){
+  display.value = total
+  num1 = total
+  num2 = null
+  decimalBtn.disabled = false
+  console.log(total)
+}
 
-addBtn.onclick = function(){
-  reset()
+addBtn.onclick = () => {
+  reset('adding')
   adding = "yes"
-  console.log('adding')
+
+  if(num2 != null){
+    total = num1 + num2
+    resetSecond()
+  } 
 }
 
-minusBtn.onclick = function(){
-  reset()
+minusBtn.onclick = () => {
+  reset('subtracting')
   subtracting = "yes"
-  console.log('subtracting')
+
+  if (num2 != null) {
+    total = num1 - num2
+    resetSecond()
+  }
 }
 
-divideBtn.onclick = function(){
-  reset()
-  dividing = "yes"
-  console.log('dividing')
-}
-
-multiplyBtn.onclick = function(){
-  reset()
+multiplyBtn.onclick = () => {
+  reset('multiplying')
   multiplying = "yes"
-  console.log('multiplying')
+
+  if (num2 != null) {
+    total = num1 * num2
+    resetSecond()
+  }
+}
+
+divideBtn.onclick = () => {
+  reset('dividing')
+  dividing = "yes"
+
+  if (num2 != null) {
+    total = num1 / num2
+    resetSecond()
+  }
 }
 
 clearBtn.onclick = function(){
@@ -142,7 +165,7 @@ equalsBtn.onclick = function(){
     console.log('total ' + total)
 
     num1 = total
-    // num2 = null
+    num2 = null
     array = []
     decimalBtn.disabled = false
 
