@@ -91,8 +91,8 @@ function resetSecond(){
 }
 
 addBtn.onclick = () => {
-  reset('adding')
-  operation = "ADD"
+  reset()
+  operation = "ADDING"
 
   if(num2 != null){
     total = num1 + num2
@@ -101,7 +101,7 @@ addBtn.onclick = () => {
 }
 
 minusBtn.onclick = () => {
-  reset('subtracting')
+  reset()
   operation = "SUBSTRACTING"
 
   if (num2 != null) {
@@ -112,7 +112,7 @@ minusBtn.onclick = () => {
 
 multiplyBtn.onclick = () => {
   operation = "MULTIPLYING"
-  reset('multiplying')
+  reset()
   multiplying = "yes"
 
   if (num2 != null) {
@@ -123,7 +123,7 @@ multiplyBtn.onclick = () => {
 
 divideBtn.onclick = () => {
   operation = "DIVIDING"
-  reset('dividing')
+  reset()
   dividing = "yes"
 
   if (num2 != null) {
@@ -147,22 +147,22 @@ clearBtn.onclick = function(){
 
 equalsBtn.onclick = function(){
   {
-    if (operation == 'ADD') {
+    if (operation == 'ADDING') {
       total = (num1 + num2)
-      operation = null  
-      console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
-    } else if (operation == 'SUBTRACT') {
+        console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
+        operation = null
+    } else if (operation == 'SUBSTRACTING') {
       total = (num1 - num2)
-      operation = null  
-      console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
-    } else if (operation == 'DIVIDE') {
+        console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
+        operation = null
+    } else if (operation == 'DIVIDING') {
       total = (num1 / num2)
-      operation = null  
-      console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
+        console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
+        operation = null
     } else if (operation == 'MULTIPLYING') {
       total = (num1 * num2)
-      operation = null  
-      console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
+        console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
+        operation = null
     }
 
     display.value = total
