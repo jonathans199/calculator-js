@@ -14,7 +14,6 @@
 */
 
 let display = (document.getElementById('display'))
-// let displaysValue = null
 let array = []
 
 // Operators
@@ -30,13 +29,10 @@ const clearBtn = document.getElementById('btn-clear')
 let num1, num2, total 
 
 // Flags
-let operationOneRan = "no"
+let getNumBtnValue = "no"
+let operation = null
 
-let adding = "no"
-let subtracting = "no"
-let dividing = "no"
-let multiplying = "no"
-
+// Decimal check
 function isDecimalPresent(){
   if (array.includes('.')) {
     decimalBtn.disabled = true
@@ -52,12 +48,12 @@ for (let i = 0; i < numBtn.length; i++) {
     btnElement.addEventListener('click', function(){
       array.push(btnElement.value)
 
-      if (operationOneRan == "no") {
+      if (getNumBtnValue == "no") {
         num1 = (display.value = parseFloat(array.join('')))
         isDecimalPresent() 
         console.log(num1)
 
-      } else if (operationOneRan == "yes"){
+      } else if (getNumBtnValue == "yes"){
         num2 = (display.value = parseFloat(array.join(''))) 
         isDecimalPresent()
         console.log(num2)
@@ -82,7 +78,7 @@ function reset(){
   decimalBtn.disabled = false
 
   if (num1 > 0) {
-    operationOneRan = "yes"
+    getNumBtnValue = "yes"
   }
 }
 
@@ -96,7 +92,7 @@ function resetSecond(){
 
 addBtn.onclick = () => {
   reset('adding')
-  adding = "yes"
+  operation = "ADD"
 
   if(num2 != null){
     total = num1 + num2
@@ -106,7 +102,7 @@ addBtn.onclick = () => {
 
 minusBtn.onclick = () => {
   reset('subtracting')
-  subtracting = "yes"
+  operation = "SUBSTRACTING"
 
   if (num2 != null) {
     total = num1 - num2
@@ -115,6 +111,7 @@ minusBtn.onclick = () => {
 }
 
 multiplyBtn.onclick = () => {
+  operation = "MULTIPLYING"
   reset('multiplying')
   multiplying = "yes"
 
@@ -125,6 +122,7 @@ multiplyBtn.onclick = () => {
 }
 
 divideBtn.onclick = () => {
+  operation = "DIVIDING"
   reset('dividing')
   dividing = "yes"
 
@@ -140,34 +138,27 @@ clearBtn.onclick = function(){
   decimalBtn.disabled = false
   num1 = null
   num2 = null
-  operationOneRan = "no"
+  getNumBtnValue = "no"
   total = 0
-  adding = "no"
-  subtracting = "no"
-  dividing = "no"
-  multiplying = "no"
+  operation = null
 
   console.log('clear')
 }
 
 equalsBtn.onclick = function(){
   {
-    if (adding == "yes") {
+    if (operation == 'ADD') {
       total = (num1 + num2)
         console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
-      adding = "no" // reset flag for continous operations // reset flag for continous operations
-    } else if (subtracting == "yes") {
+    } else if (operation == 'SUBTRACT') {
       total = (num1 - num2)
         console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
-      subtracting = "no" // reset flag for continous operations
-    } else if (dividing == "yes") {
+    } else if (operation == 'DIVIDE') {
       total = (num1 / num2)
         console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
-      dividing = "no" // reset flag for continous operations
-    } else if (multiplying == "yes") {
+    } else if (operation == 'MULTIPLYING') {
       total = (num1 * num2)
         console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
-      multiplying = "no" // reset flag for continous operations
     }
 
     display.value = total
@@ -178,6 +169,6 @@ equalsBtn.onclick = function(){
     array = []
     decimalBtn.disabled = false
 
-    operationOneRan = "no"
+    getNumBtnValue = "no"
   }
 }
