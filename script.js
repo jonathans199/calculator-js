@@ -13,10 +13,9 @@
   - 
 */
 
-const display = document.getElementById('display')
-let displaysValue = null
+let display = (document.getElementById('display'))
+// let displaysValue = null
 let array = []
-let operator1 = null
 
 // Operators
 const decimalBtn = document.getElementById('btn-decimal')
@@ -31,49 +30,59 @@ const clearBtn = document.getElementById('btn-clear')
 let num1, num2, total 
 
 // Flags
-let operating = null
+let operationOneRan = "no"
 
-let setValueWasCalled = "no"
 let adding = "no"
 let subtracting = "no"
 let dividing = "no"
 let multiplying = "no"
 
-// get values from HTML
-function setValue(btnValue) {
-  if (setValueWasCalled == "no") {
-    array.push(btnValue) //push number from value into array => array
-
-    if (array.includes('.') ){
-        decimalBtn.disabled = true    
-    } 
-
-    displaysValue = (display.value = array.join(''))  //assign first number to number
-    num1 = parseFloat(displaysValue) 
-
-    console.log('num1 => ' + num1)
-
-  } else if (setValueWasCalled == "yes") {
-    array.push(btnValue) //push number from value into array => array
-
-      if (array.includes('.')) { //find out if array already contains a decimal
-        decimalBtn.disabled = true // if yes then disable the decimal button
-      }
-
-      displaysValue = (display.value = array.join('')) //assign first number to number
-      num2 = parseFloat(displaysValue)
-
-      console.log('num2 =>' + num2)
-  }
+function isDecimalPresent(){
+  if (array.includes('.')) {
+    decimalBtn.disabled = true
+  } 
 }
 
-function reset(x){
+// get values from HTML
+const numBtn = document.querySelectorAll('.btn-number')
+
+for (let i = 0; i < numBtn.length; i++) {
+  const btnElement = numBtn[i];
+
+    btnElement.addEventListener('click', function(){
+      array.push(btnElement.value)
+
+      if (operationOneRan == "no") {
+        num1 = (display.value = parseFloat(array.join('')))
+        isDecimalPresent() 
+        console.log(num1)
+
+      } else if (operationOneRan == "yes"){
+        num2 = (display.value = parseFloat(array.join(''))) 
+        isDecimalPresent()
+        console.log(num2)
+      } 
+  })
+}
+
+
+// =========== ANDY'S solution ========== //
+// numBtn.forEach(x => {
+//   x.onclick = function (e) {
+//     // console.log(e.target.tagName)
+//     console.log(e.target.tagName)
+    
+//     setValue(e.target.value)
+//   }
+// })
+
+
+function reset(){
   array = []
   decimalBtn.disabled = false
-  console.log(x)
 
   if (num1 > 0) {
-    setValueWasCalled = "yes"
+    operationOneRan = "yes"
   }
 }
 
@@ -131,7 +140,7 @@ clearBtn.onclick = function(){
   decimalBtn.disabled = false
   num1 = null
   num2 = null
-  setValueWasCalled = "no"
+  operationOneRan = "no"
   total = 0
   adding = "no"
   subtracting = "no"
@@ -169,6 +178,6 @@ equalsBtn.onclick = function(){
     array = []
     decimalBtn.disabled = false
 
-    setValueWasCalled = "no"
+    operationOneRan = "no"
   }
 }
