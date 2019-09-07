@@ -149,16 +149,20 @@ equalsBtn.onclick = function(){
   {
     if (operation == 'ADD') {
       total = (num1 + num2)
-        console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
+      operation = null  
+      console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
     } else if (operation == 'SUBTRACT') {
       total = (num1 - num2)
-        console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
+      operation = null  
+      console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
     } else if (operation == 'DIVIDE') {
       total = (num1 / num2)
-        console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
+      operation = null  
+      console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
     } else if (operation == 'MULTIPLYING') {
       total = (num1 * num2)
-        console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
+      operation = null  
+      console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
     }
 
     display.value = total
