@@ -29,7 +29,7 @@ const clearBtn = document.getElementById('btn-clear')
 let num1, num2, total 
 
 // Flags
-let getNumBtnValue = "no"
+let getNumBtnValue = false
 let operation = null
 
 // Decimal check
@@ -48,12 +48,12 @@ for (let i = 0; i < numBtn.length; i++) {
     btnElement.addEventListener('click', function(){
       array.push(btnElement.value)
 
-      if (getNumBtnValue == "no") {
+      if (!getNumBtnValue) {
         num1 = (display.value = parseFloat(array.join('')))
         isDecimalPresent() 
         console.log(num1)
 
-      } else if (getNumBtnValue == "yes"){
+      } else {
         num2 = (display.value = parseFloat(array.join(''))) 
         isDecimalPresent()
         console.log(num2)
@@ -61,24 +61,17 @@ for (let i = 0; i < numBtn.length; i++) {
   })
 }
 
-
-// =========== ANDY'S solution ========== //
-// numBtn.forEach(x => {
-//   x.onclick = function (e) {
-//     // console.log(e.target.tagName)
-//     console.log(e.target.tagName)
-    
-//     setValue(e.target.value)
-//   }
-// })
-
+decimalBtn.addEventListener('click' , function(){
+  array.push('.')
+  isDecimalPresent()
+})
 
 function reset(){
   array = []
   decimalBtn.disabled = false
 
   if (num1 > 0) {
-    getNumBtnValue = "yes"
+    getNumBtnValue = true
   }
 }
 
@@ -90,9 +83,9 @@ function resetSecond(){
   console.log(total)
 }
 
-addBtn.onclick = () => {
-  reset()
+addBtn.onclick = () => { 
   operation = "ADDING"
+  reset()
 
   if(num2 != null){
     total = num1 + num2
@@ -101,8 +94,8 @@ addBtn.onclick = () => {
 }
 
 minusBtn.onclick = () => {
-  reset()
   operation = "SUBSTRACTING"
+  reset()
 
   if (num2 != null) {
     total = num1 - num2
@@ -113,7 +106,6 @@ minusBtn.onclick = () => {
 multiplyBtn.onclick = () => {
   operation = "MULTIPLYING"
   reset()
-  multiplying = "yes"
 
   if (num2 != null) {
     total = num1 * num2
@@ -124,7 +116,6 @@ multiplyBtn.onclick = () => {
 divideBtn.onclick = () => {
   operation = "DIVIDING"
   reset()
-  dividing = "yes"
 
   if (num2 != null) {
     total = num1 / num2
@@ -138,7 +129,7 @@ clearBtn.onclick = function(){
   decimalBtn.disabled = false
   num1 = null
   num2 = null
-  getNumBtnValue = "no"
+  getNumBtnValue = false
   total = 0
   operation = null
 
@@ -172,7 +163,6 @@ equalsBtn.onclick = function(){
     num2 = null
     array = []
     decimalBtn.disabled = false
-
-    getNumBtnValue = "no"
+    getNumBtnValue = false
   }
 }
