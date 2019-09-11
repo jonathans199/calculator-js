@@ -1,4 +1,4 @@
-/* CALCULATOR 
+/* CALCULATOR psudocode
   1 - get value when btn is pressed
   2 - display that value in the display 
   3 - if btn pressed more than once keep adding btn to string
@@ -124,8 +124,8 @@ divideBtn.onclick = () => {
 }
 
 clearBtn.onclick = function(){
-  display.value = 0
   array = []
+  display.value = 0
   decimalBtn.disabled = false
   num1 = null
   num2 = null
@@ -138,22 +138,32 @@ clearBtn.onclick = function(){
 
 equalsBtn.onclick = function(){
   {
-    if (operation == 'ADDING') {
-      total = (num1 + num2)
-        console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
+    switch (operation){
+      case 'ADDING':
+        total = (num1 + num2)
+          console.log(`total = ${total} (num1=> ${num1} + num2=> ${num2})`)
         operation = null
-    } else if (operation == 'SUBSTRACTING') {
-      total = (num1 - num2)
-        console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
+        break;
+
+      case 'SUBSTRACTING':
+        total = (num1 - num2)
+          console.log(`total = ${total} (num1=> ${num1} - num2=> ${num2})`)
         operation = null
-    } else if (operation == 'DIVIDING') {
-      total = (num1 / num2)
-        console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
+        break;
+
+      case 'DIVIDING':
+        total = (num1 / num2)
+          console.log(`total = ${total} (num1=> ${num1} / num2=> ${num2})`)
         operation = null
-    } else if (operation == 'MULTIPLYING') {
-      total = (num1 * num2)
-        console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
+        break;
+      
+      case 'MULTIPLYING':
+        total = (num1 * num2)
+          console.log(`total = ${total} (num1=> ${num1} * num2=> ${num2})`)
         operation = null
+        break;
+          
+      default: 
     }
 
     display.value = total
